@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Advance Wars';
+  src: url('../fonts/aw2text.eot');
+  src: local('☺'), url('../fonts/aw2text.woff') format('woff'), url('../fonts/aw2text.ttf') format('truetype'), url('../fonts/aw2text.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background-color: #e1ddd9;
   font-size: 12px;
@@ -6,49 +14,8 @@ body {
   text-align: center;
 }
 
-#content {
-  width: 400px;
-  padding: 7px;
-  margin: 0 auto;
-  text-align: left;
-  background: url("bg.jpg") no-repeat;
-  background-color: #fff;
-  overflow: auto;
-  border: 1px solid #ADABA8;
-  margin-bottom: 10px;
-}
-
-#tiny_box {
-  width: 400px;
-  padding: 7px;
-  margin: 0 auto;
-  text-align: left;
-  background-color: #fff;
-  overflow: auto;
-  border: 1px solid #C4C1BD;
-  margin-bottom: 10px;
-  font-size: 9px;
-  text-align: center;
-}
-
-#header {
-	font-size: 150%;
-	font-weight: bold;
-	text-align: center;
-}
-
 a {
  color: #000000;
-}
-
-/* useful style begins now */
-
-@font-face {
-  font-family: 'Advance Wars';
-  src: url('../fonts/aw2text.eot');
-  src: local('☺'), url('../fonts/aw2text.woff') format('woff'), url('../fonts/aw2text.ttf') format('truetype'), url('../fonts/aw2text.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
 }
 
 h2 {
@@ -69,6 +36,37 @@ select:last-child {
   margin-bottom: 0;
 }
 
+#content {
+  width: 400px;
+  padding: 7px;
+  margin: 0 auto;
+  text-align: left;
+  background: url("../images/bg.jpg") no-repeat;
+  background-color: #fff;
+  overflow: auto;
+  border: 1px solid #ADABA8;
+  margin-bottom: 10px;
+}
+
+#footer {
+  width: 400px;
+  padding: 7px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: #fff;
+  overflow: auto;
+  border: 1px solid #C4C1BD;
+  margin-bottom: 10px;
+  font-size: 9px;
+  text-align: center;
+}
+
+#header {
+	font-size: 150%;
+	font-weight: bold;
+	text-align: center;
+}
+
 .field-group {
   border: 1px solid #C4C1BD; padding: 5px; margin-bottom: 10px;
   overflow: hidden;
@@ -81,9 +79,6 @@ select:last-child {
   height: 31px;
   cursor: pointer;
   margin: 20px 50px 0 0;
-}
-
-#quote-preview {
 }
 
 #quote-preview #portrait {

@@ -86,7 +86,7 @@
 		</div>
 	</div>
 </div>
-<div id="tiny_box">
+<div id="footer">
 	Advance Wars is &copy; Nintendo, Intelligent Systems.  Developed by <a href="https://twitter.com/devinwl">@devinwl</a>.
 </div>
 </body>
