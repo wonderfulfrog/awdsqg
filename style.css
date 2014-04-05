@@ -1,0 +1,42 @@
+body {
+  background-color: #e1ddd9;
+  font-size: 12px;
+  font-family: Verdana, Arial, Helvetica, SunSans-Regular, Sans-Serif;
+  color:#564b47;  
+  text-align: center;
+}
+
+#content { 
+  width: 400px;
+  padding: 7px;
+  margin: 0 auto;
+  text-align: left;
+  background: url("bg.jpg") no-repeat;
+  background-color: #fff;	
+  overflow: auto;
+  border: 1px solid #ADABA8;
+  margin-bottom: 10px;
+}
+
+#tiny_box { 
+  width: 400px;
+  padding: 7px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: #fff;	
+  overflow: auto;
+  border: 1px solid #C4C1BD;
+  margin-bottom: 10px;
+  font-size: 9px;
+  text-align: center;
+}
+
+#header {
+	font-size: 150%;
+	font-weight: bold;
+	text-align: center;
+}
+
+a {
+ color: #000000;
+}
