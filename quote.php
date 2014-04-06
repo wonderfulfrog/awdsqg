@@ -1,12 +1,5 @@
 <?php
 
-if(file_exists('settings.php')) {
-	require_once('settings.php');
-}
-else {
-	die('-1');
-}
-
 $chosen_co = $_GET['co'];
 $backdrop_plain = $_GET['backdrop'];
 $expr = $_GET['expr'];
@@ -77,25 +70,8 @@ imagepng($image);
 $image_data = ob_get_contents();
 ob_end_clean();
 
+// Get image in base64
 $image64 = base64_encode($image_data);
-
-// Upload image (in base64) to imgur
-// Note: imgurClientId is defined in settings.php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.imgur.com/3/image');
-curl_setopt($ch, CURLOPT_POST, TRUE);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Authorization: Client-ID ' . $imgurClientId ));
-curl_setopt($ch, CURLOPT_POSTFIELDS, array( 'image' => $image64 ));
-
-$reply = curl_exec($ch);
-curl_close($ch);
-
-$reply = json_decode($reply);
-if($reply->status == 200) {
-	print $reply->data->link;
-}
-else
-	print -1;
+print $image64;
 
 ?>

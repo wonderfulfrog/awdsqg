@@ -2,6 +2,7 @@ var co = "andy";
 var backdrop = "standard";
 var mood = 'normal';
 var alt = false;
+var clientId = '46083a920d1f30a';
 
 (function($) {
 	$(document).ready(function() {
@@ -16,15 +17,30 @@ var alt = false;
 				url: 'quote.php',
 				data: data
 			}).done(function(responseText) {
-				$('#loading').hide();
-				if(responseText == -1) {
-					$('#error').slideDown();
-				}
-				else {
-					$('#finished').html($('<img>').attr('src', responseText));
-					$('#finished-url').val(responseText);
+				var image = responseText;
+				$.ajax({
+					url: 'https://api.imgur.com/3/image',
+					method: 'POST',
+					headers: {
+						Authorization: 'Client-ID ' + clientId
+					},
+					data: {
+						image: image,
+						type: 'base64'
+					}
+				}).done(function(response) {
+					var link = response.data.link;
+					$('#loading').hide();
+					$('#finished').html($('<img>').attr('src', link));
+					$('#finished-url').val(link);
 					$('#generated-quote').slideDown();
-				}
+				}).fail(function() {
+					$('#error').slideDown();
+					$('#loading').hide();
+				});
+			}).fail(function() {
+				$('#error').slideDown();
+				$('#loading').hide();
 			});
 		});
 
