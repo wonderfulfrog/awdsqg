@@ -1,5 +1,12 @@
 <?php
 
+if(file_exists('settings.php')) {
+	require_once('settings.php');
+}
+else {
+	die('-1');
+}
+
 $chosen_co = $_GET['co'];
 $backdrop_plain = $_GET['backdrop'];
 $expr = $_GET['expr'];
@@ -45,11 +52,15 @@ $lines = explode("\r\n", $text);
 $line1 = '';
 $line2 = '';
 
+/* Attempts to break up a line into multiple parts
+   Not perfect, but good for general usage */
+
+// If we have two lines, then we are already done
 if(count($lines) == 2) {
 	$line1 = $lines[0];
 	$line2 = $lines[1];
 }
-else {
+else { // Otherwise, break em up with wordwrap()
 	$newLines = wordwrap($lines[0], 40, "\r\n");
 	$newLines = explode("\r\n", $newLines);
 	$line1 = $newLines[0];
@@ -60,17 +71,31 @@ else {
 imagettftext($image, 6,0,52,20,$black,$font,$line1);
 imagettftext($image, 6,0,52,37,$black,$font,$line2);
 
-//ob_start();
-//
-header('Content-type: image/gif');
+// Capture the image data from imagegif() and then convert to to base64 for uploading to imgur
+ob_start();
+imagepng($image);
+$image_data = ob_get_contents();
+ob_end_clean();
 
-//print_r(wordwrap($lines[0], 38, "\n"));
+$image64 = base64_encode($image_data);
 
-imagegif($image);
-//$image_data = ob_get_contents();
+// Upload image (in base64) to imgur
+// Note: imgurClientId is defined in settings.php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://api.imgur.com/3/image');
+curl_setopt($ch, CURLOPT_POST, TRUE);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Authorization: Client-ID ' . $imgurClientId ));
+curl_setopt($ch, CURLOPT_POSTFIELDS, array( 'image' => $image64 ));
 
-//ob_end_clean();
+$reply = curl_exec($ch);
+curl_close($ch);
 
-//print base64_encode($image_data);
+$reply = json_decode($reply);
+if($reply->status == 200) {
+	print $reply->data->link;
+}
+else
+	print -1;
 
 ?>

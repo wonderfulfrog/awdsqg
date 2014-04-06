@@ -15,19 +15,31 @@ body {
 }
 
 a {
- color: #000000;
+ color: #d40000;
+ text-decoration: none;
+}
+
+a:hover {
+  color: #f82828;
 }
 
 h2 {
   margin: 0 0 5px 0;
-  font-size: 120%;
+  text-shadow:
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000,
+     2px 2px 0 #000;
   font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
 }
 
 select {
   float: left;
   display: block;
-  margin: 0 0 10px 55px;
+  margin: 0 0 10px 73px;
   width: 170px;
 }
 
@@ -41,10 +53,18 @@ select:last-child {
   margin: 0 auto;
   text-align: left;
   background: url("../images/bg.jpg") no-repeat;
+  background-size: 100%;
+  background-position: 0 100%;
   background-color: #fff;
   overflow: auto;
-  border: 1px solid #ADABA8;
   margin-bottom: 10px;
+  border-top: 2px solid red;
+  border-bottom: 2px solid blue;
+  border-radius: 3px;
+  box-shadow: -1px -1px 0 #fff,
+              -1px 1px 0 #fff,
+              1px -1px 0 #fff,
+              1px 1px 0 #fff;
 }
 
 #footer {
@@ -54,8 +74,7 @@ select:last-child {
   text-align: left;
   background-color: #fff;
   overflow: auto;
-  border: 1px solid #C4C1BD;
-  margin-bottom: 10px;
+  border-radius: 3px;
   font-size: 9px;
   text-align: center;
 }
@@ -85,8 +104,23 @@ select:last-child {
 }
 
 .field-group {
-  border: 1px solid #C4C1BD; padding: 5px; margin-bottom: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
   overflow: hidden;
+}
+
+#error.box {
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  border-left: 1px solid red;
+  border-right: 1px solid red;
+  border-radius: 3px;
+  background: #fff;
+  padding: 10px;
+  box-shadow: -1px -1px 0 #fff,
+              -1px 1px 0 #fff,
+              1px -1px 0 #fff,
+              1px 1px 0 #fff;
 }
 
 #alt {
@@ -95,7 +129,38 @@ select:last-child {
   width: 35px;
   height: 31px;
   cursor: pointer;
-  margin: 20px 50px 0 0;
+  margin: 20px 73px 0 0;
+}
+
+#loading {
+  width: 100%;
+  text-align: center;
+}
+
+#generate-button {
+  border-top: 2px solid red;
+  border-bottom: 2px solid blue;
+  border-radius: 3px;
+  border-left: 0;
+  border-right: 0;
+  background: #fff url('../images/star.gif') no-repeat;
+  background-position: 5px 56%;
+  font-family: 'Advance Wars';
+  font-size: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  line-height: 20px;
+  padding-left: 16px;
+}
+
+#quote-box {
+  height: 75px;
+}
+
+#quote-preview {
+  clear: both;
 }
 
 #quote-preview #portrait {
@@ -123,4 +188,18 @@ select:last-child {
   height: 48px;
   position: relative;
   margin: 0 auto;
+}
+
+#finished {
+  width: 240px;
+  margin: 0 auto;
+}
+
+#finished-url {
+  width: 230px;
+  border: 0;
+  font-family: 'Source Sans Pro';
+  margin: 0 auto;
+  display: block;
+  padding: 5px;
 }

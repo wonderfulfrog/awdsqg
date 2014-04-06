@@ -7,13 +7,24 @@ var alt = false;
 	$(document).ready(function() {
 		$('#quote').submit(function(e) {
 			e.preventDefault();
+			$('#error').hide();
+			$('#loading').show();
+			$('#generated-quote').slideUp();
 			var data = $(this).serialize();
 			$.ajax({
 				type: 'GET',
 				url: 'quote.php',
 				data: data
 			}).done(function(responseText) {
-				$('#finished').html($('<img>').attr('src', 'quote.php?' + data));
+				$('#loading').hide();
+				if(responseText == -1) {
+					$('#error').slideDown();
+				}
+				else {
+					$('#finished').html($('<img>').attr('src', responseText));
+					$('#finished-url').val(responseText);
+					$('#generated-quote').slideDown();
+				}
 			});
 		});
 
@@ -42,7 +53,11 @@ var alt = false;
 				$(this).css('background-position', '0 0');
 			}
 			updateQuote();
-		})
+		});
+
+		$('#finished-url').click(function() {
+			$(this).select();
+		});
 
 		function updateQuote() {
 			$('#background').css('background-image', 'url(images/backdrop/' + backdrop + '.gif)');
@@ -65,69 +80,10 @@ var alt = false;
 				case 'lose':
 					$('#portrait').css('background-position', '-96px 0');
 					break;
+
+				default:
+					$('#portrait').css('background-position', '0 0');
 			}
 		}
 	});
 })(jQuery);
-
-/*
-function make_quote() {
-	var httpSend = new Array();
-	var i = new Date();
-	httpSend[i] = getHTTP();
-	httpSend[i].open("POST", "gen_quote.php", true);
-	httpSend[i].setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	var co = document.forms['quote'].elements['co_select'].value;
-	var expr = document.forms['quote'].elements['expr_select'].value;
-	var backd = document.forms['quote'].elements['backdrop_select'].value;
-	var line1 = document.forms['quote'].elements['line1'].value;
-	var line2 = document.forms['quote'].elements['line2'].value;
-	if (alt == "true")
-		co = co + "-alt";
-	var params = "co=" + co + "&expr=" + expr + "&backd=" + backd + "&line1=" + line1 + "&line2=" + line2;
-	httpSend[i].send(params);
-	document.getElementById("finished").innerHTML = "<img src='working.gif'>";
-	httpSend[i].onreadystatechange = function() {
-		if ((httpSend[i].readyState == 4) && (httpSend[i].status == 200)) {
-			document.getElementById("finished").innerHTML = httpSend[i].responseText;
-		}
-	}
-	return false;
-}
-
-function set_preview(opt) {
-	if (opt == "backdrop") {
-		var backd = document.forms['quote'].elements['backdrop_select'].value;
-		document.getElementById("background").innerHTML = "<img src='backdrop/" + backd + ".gif'>";
-		return false;
-	}
-	var co = document.forms['quote'].elements['co_select'].value;
-	var expr = document.forms['quote'].elements['expr_select'].value;
-	if (co == "dummy") { return false; }
-	if (alt == "true")
-		co = co + "-alt";
-	document.getElementById("portrait").style.background = "url('co/" + co + ".gif')";
-
-	if (expr == "win")
-		document.getElementById("portrait").style.backgroundPosition = "96px 0px";
-	else if (expr == "lose")
-		document.getElementById("portrait").style.backgroundPosition = "48px 0px";
-	else
-		document.getElementById("portrait").style.backgroundPosition = "0px 0px";
-	//document.getElementById("portrait").innerHTML = "<img src='ds_cos/" + co + "-" + expr + ".gif'>";
-}
-
-function flag_alt()
-{
-	if (alt == "false")
-	{
-		document.getElementById("alt").style.backgroundPosition = "0px -36px";
-		alt = "true";
-	}
-	else
-	{
-		document.getElementById("alt").style.backgroundPosition = "0px 0px";
-		alt = "false";
-	}
-}
-*/
