@@ -87,7 +87,7 @@
 	</div>
 </div>
 <div id="footer">
-	All Advance Wars imagery and names are &copy; Nintendo, Intelligent Systems.  Developed by <a href="https://twitter.com/devinwl">@devinwl</a>.
+	All Advance Wars imagery and names are &copy; Nintendo, Intelligent Systems.  View source on <a href="https://github.com/devinwl/awdsqg">github</a>.
 </div>
 </body>
 </html>
