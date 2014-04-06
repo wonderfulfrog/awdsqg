@@ -12,7 +12,7 @@
 <body>
 <div id="content">
 	<div id="header">
-		<h2>Advance Wars Dual Strike</h2>
+		<h2>Advance Wars: Dual Strike</h2>
 		<h3>Quote Generator</h3>
 	</div>
 	<form method="post" action="index.php" id="quote">
@@ -55,8 +55,7 @@
 			</select>
 			<select id="backdrop-select" name="backdrop">
 				<option value="standard">Select Backdrop</option>
-				<option value="standard">Standard AWDS Backdrop</option>
-				<option value="orange">Orange Star</option>
+				<option value="standard">Orange Star</option>
 				<option value="blue">Blue Moon</option>
 				<option value="green">Green Earth</option>
 				<option value="yellow">Yellow Comet</option>
