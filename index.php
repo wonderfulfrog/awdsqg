@@ -3,20 +3,22 @@
 <head>
 <title>Advance Wars DS Quote Generator</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <script src="js/jquery.min.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-	<div id="header">Advance Wars DS Quote Generator</div>
-	<div style="text-align: center"><i>"Hilarity will ensue!"</i></div>
-	<p>It's pretty simple to use.  Just select the options you want.  After you've selected an option, your change will be reflected in the "Quote Preview" (except for text) below.  Neat!  Once you're all finished, just hit the big ol' button.  Your quote will appear magically below!  Cool!</p>
+	<div id="header">
+		<h2>Advance Wars Dual Strike</h2>
+		<h3>Quote Generator</h3>
+	</div>
 	<form method="post" action="index.php" id="quote">
 	<h2>Select your CO</h2>
 	<div class="field-group">
-		<div id="alt"></div>
-		<select id="co-select" name="co-select">
+		<div id="alt"><input type="hidden" name="alt" id="alt-value" value="false" /></div>
+		<select id="co-select" name="co">
 			<option value="dummy">Select CO</option>
 			<option disabled="disabled" style="font-weight: bold">ORANGE STAR</option>
 			<option value="jake">Jake</option>
@@ -51,7 +53,7 @@
 			<option value="kindle">Kindle</option>
 			<option value="von-bolt">Von Bolt</option>
 		</select>
-		<select id="backdrop-select" name="backdrop-select">
+		<select id="backdrop-select" name="backdrop">
 			<option value="standard">Select Backdrop</option>
 			<option value="standard">Standard AWDS Backdrop</option>
 			<option value="orange">Orange Star</option>
@@ -60,7 +62,7 @@
 			<option value="yellow">Yellow Comet</option>
 			<option value="black">Black Hole</option>
 		</select>
-		<select id="expr-select" name="expr-select">
+		<select id="expr-select" name="expr">
 			<option value="standard">Select a Mood</option>
 			<option value="normal">Normal</option>
 			<option value="lose">Shocked</option>
@@ -71,13 +73,14 @@
 	<div class="field-group">
 		<div id="quote-preview">
 			<div id="background" style="background: url('images/backdrop/standard.gif');">
-				<textarea id="quote-text">Type something funny!</textarea>
+				<textarea id="quote-text" name="text">Type something funny!</textarea>
 				<div id="portrait" style="background: url('images/co/andy.gif');"></div>
 			</div>
 		</div>
 	</div>
+	<input type="submit" value="Do it" />
 	</form>
-	<div class="generated-quote" style="display: none">
+	<div class="generated-quote">
 		<h2>Your Quote</h2>
 		<div class="field-group">
 			<div style="text-align: center">

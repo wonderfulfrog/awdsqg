@@ -7,7 +7,14 @@ var alt = false;
 	$(document).ready(function() {
 		$('#quote').submit(function(e) {
 			e.preventDefault();
-			console.log('gen time');
+			var data = $(this).serialize();
+			$.ajax({
+				type: 'GET',
+				url: 'quote.php',
+				data: data
+			}).done(function(responseText) {
+				$('#finished').html($('<img>').attr('src', 'quote.php?' + data));
+			});
 		});
 
 		$('#co-select').change(function() {
@@ -27,6 +34,13 @@ var alt = false;
 
 		$('#alt').click(function() {
 			alt = !alt;
+			$('#alt-value').val(alt);
+			if(alt) {
+				$(this).css('background-position', '0 -36px');
+			}
+			else {
+				$(this).css('background-position', '0 0');
+			}
 			updateQuote();
 		})
 
